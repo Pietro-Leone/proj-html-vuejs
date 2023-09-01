@@ -31,7 +31,7 @@ export default {
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">home</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu border-0">
               <li><a class="dropdown-item" href="#">Classic Shop</a></li>
               <li><a class="dropdown-item" href="#">Extended Width</a></li>
             </ul>
@@ -49,7 +49,7 @@ export default {
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">account</a>
-          <ul class="dropdown-menu dropdown-menu-lg-end" style="width: 280px;">
+          <ul class="dropdown-menu dropdown-menu-lg-end border-0" style="width: 280px;">
 
             <form class="px-4 py-2">
               <div class="mb-2">
@@ -84,8 +84,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use "../style/partials/variables" as *;
 .nav-link {
   text-transform: uppercase;
+  color: $color-primary;
+  font-weight: 500;
 }
 
 .dropdown-toggle {
