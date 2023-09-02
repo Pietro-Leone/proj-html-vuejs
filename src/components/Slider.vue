@@ -2,26 +2,50 @@
 export default {
   props: {
     img: Array,
-    carouselSlide: Number
+    carouselSlide: Number,
+  },
+  data() {
+    return {
+      currentIndex: 0,
+    }
+  },
+  computed: {
+    totalSlides() {
+      return Math.ceil(this.img.length / this.carouselSlide);
+    },
+    currentSlideImages() {
+      const start = this.currentIndex * this.carouselSlide;
+      const end = start + this.carouselSlide;
+      return this.img.slice(start, end);
+    },
+  },
+  methods: {
+    nextSlide() {
+      this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+    },
+    prevSlide() {
+      this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+    },
   }
 }
 </script>
 
 <template>
-  <div id="carousel" class="carousel slide w-50">
+  <div :id="`carousel`" class="carousel slide">
     <div class="carousel-inner">
-      <div class="carousel-item" :class="i === 0 ? 'active' : ''" v-for="(el, i) in carouselSlide">
+      <div class="carousel-item" :class="{ active: i === currentIndex }" v-for="(slideImages, i) in carouselSlide"
+        :key="index">
         <div class="d-flex gap-3">
-          <img :src="`src/assets/${[img[i]]}`" class="d-block w-100" alt="img">
-          <img :src="`src/assets/${img[i+2]}`" class="d-block w-100" alt="img">
+          <img :src="`src/assets/${image}`" class="d-block w-100" alt="img"
+            v-for="(image, imageIndex) in currentSlideImages" :key="imageIndex">
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+    <button class="carousel-control-prev" @click="prevSlide">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+    <button class="carousel-control-next" @click="nextSlide">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
