@@ -6,16 +6,8 @@ export default {
     Nav,
     Jumbotron,
   },
-  data(){
-    return{
-      navElements:[
-        'shop',
-        'about',
-        'gallery',
-        'location',
-        'journal',
-        'contact'
-      ]
+  data() {
+    return {
     }
   }
 }
@@ -24,7 +16,7 @@ export default {
 <template>
   <header>
     <div class="shipping">Free International Shipping - 10% OFF SITE</div>
-    <Nav :navElements="navElements"/>
+    <Nav/>
     <Jumbotron/>
   </header>
 </template>

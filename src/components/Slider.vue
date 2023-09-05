@@ -3,6 +3,7 @@ export default {
   props: {
     img: Array,
     carouselSlide: Number,
+    px: Number,
   },
   data() {
     return {
@@ -34,9 +35,9 @@ export default {
   <div :id="`carousel`" class="carousel slide">
     <div class="carousel-inner">
       <div class="carousel-item" :class="{ active: i === currentIndex }" v-for="(slideImages, i) in carouselSlide"
-        :key="index">
+        :key="i">
         <div class="d-flex gap-3">
-          <img :src="`src/assets/${image}`" class="d-block w-100" alt="img"
+          <img :src="`src/assets/${image}`" class="d-block w-100" :style="`max-height: ${px}px;`" alt="img"
             v-for="(image, imageIndex) in currentSlideImages" :key="imageIndex">
         </div>
       </div>
@@ -54,6 +55,10 @@ export default {
 
 <style lang="scss" scoped>
 @use "../style/partials/variables" as *;
+
+img{
+  max-height: 530px;
+}
 
 .carousel-control-prev,
 .carousel-control-next {

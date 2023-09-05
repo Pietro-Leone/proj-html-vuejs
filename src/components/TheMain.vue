@@ -38,14 +38,17 @@ export default {
     <!-- Prima Sezione - OUR PRODUCTS -->
     <section>
       <div class="container d-flex justify-content-between">
-        <div class="col-4 ">
-          <span class="text-uppercase">Our Products</span>
-          <h2>All our delectable pastries are backed fresh in our Kitchen very morning, and are made with all-natural, all
-            organic ingredients.</h2>
-          <button>Buy Avada Today!</button>
-        </div>
-        <div class="col-8">
-          <Slider :carouselSlide="2" :img="firstCarousel" />
+        <div class="row">
+          <div class="col-4 ">
+            <span class="text-uppercase">Our Products</span>
+            <h2>All our delectable pastries are backed fresh in our Kitchen very morning, and are made with all-natural,
+              all
+              organic ingredients.</h2>
+            <button>Buy Avada Today!</button>
+          </div>
+          <div class="col-8">
+            <Slider :carouselSlide="2" :img="firstCarousel" :px="530"  />
+          </div>
         </div>
       </div>
     </section>
@@ -57,8 +60,10 @@ export default {
         <div class="row">
           <div class="col-6">
             <div class="corporate-wedding" @mouseover="corporate = false" @mouseleave="corporate = true">
-              <img src="../assets/corporate-bg.jpg" alt="img" v-if="corporate">
-              <img src="../assets/corporate-hover-bg.jpg" alt="img" v-if="!corporate">
+              <div class="position-relative">
+                <img src="../assets/corporate-bg.jpg" alt="img" v-if="corporate">
+                <img src="../assets/corporate-hover-bg.jpg" alt="img" v-if="!corporate">
+              </div>
               <div class="position-absolute">
                 <span class="text-uppercase">International Bakery</span>
                 <h2>Corporate Events</h2>
@@ -80,7 +85,7 @@ export default {
         </div>
       </div>
     </section>
-    <!-- Seconda Sezione - OUR PRODUCTS -->
+    <!-- Terza Sezione - OUR PRODUCTS -->
     <section>
       <div class="container d-flex justify-content-between">
         <div class="row">
@@ -92,12 +97,12 @@ export default {
             <button>Shop All Products</button>
           </div>
           <div class="col-9">
-            <Slider :carouselSlide="4" :img="secondCarousel" />
+            <Slider :carouselSlide="4" :img="secondCarousel" :px="250" />
           </div>
         </div>
       </div>
     </section>
-    <!-- Terza Sezione -->
+    <!-- Quarta Sezione -->
     <section>
       <div class="container">
         <div class="row">
@@ -159,12 +164,105 @@ export default {
         </div>
       </div>
     </section>
-    <!-- Quarta Sezione - Location -->
+    <!-- Quinta Sezione - Location -->
     <section>
-      <div class="container">
+      <div class="container text-center locations">
+        <span class="text-uppercase">Locations</span>
+        <h2>Visit our Bakeries</h2>
+
         <div class="row">
-          <div class="col"></div>
-          <div class="col"></div>
+          <div class="ms-col">
+            <div class="overflow-hidden">
+              <img src="../assets/new-york-bk.jpg" alt="location">
+            </div>
+            <div class="row">
+              <h2>New York</h2>
+              <div class="col">
+                <div>CALL US</div>
+                <div>1.800.458.556</div>
+              </div>
+              <div class="col">
+                <div>OPEN ALL WEEK</div>
+                <div>9:00 AM - 6:00 PM</div>
+              </div>
+              <div class="col">
+                <button>View Map</button>
+              </div>
+            </div>
+          </div>
+          <div class="ms-col">
+            <div class="overflow-hidden">
+              <img src="../assets/london-bk.jpg" alt="location">
+            </div>
+            <div class="row">
+              <h2>London</h2>
+              <div class="col">
+                <div>CALL US</div>
+                <div>1.800.458.556</div>
+              </div>
+              <div class="col">
+                <div>OPEN ALL WEEK</div>
+                <div>9:00 AM - 6:00 PM</div>
+              </div>
+              <div class="col">
+                <button>View Map</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Sesta Sezione -->
+    <section>
+      <div class="container social">
+        <div class="row justify-content-between">
+          <div class="col-3">
+            <div class="overflow-hidden"><img src="../assets/social-1.jpg" alt="location"></div>
+          </div>
+          <div class="col-5">
+            <div class="follow-us">
+              <div class="text-center">
+                <p>Made for Sharing</p>
+                <h2> Let's stay in touch </h2>
+                <button><i class="fa-brands fa-instagram"></i> Follow Us</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="overflow-hidden"><img src="../assets/social-2.jpg" alt="location"></div>
+          </div>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-3">
+            <div class="overflow-hidden"><img src="../assets/social-3.jpg" alt="location"></div>
+          </div>
+          <div class="col-3">
+            <div class="overflow-hidden"><img src="../assets/social-4.jpg" alt="location"></div>
+          </div>
+          <div class="col-3">
+            <div class="overflow-hidden"><img src="../assets/social-5.jpg" alt="location"></div>
+          </div>
+          <div class="col-3">
+            <div class="overflow-hidden"><img src="../assets/social-6.jpg" alt="location"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Settima Sezione -->
+    <section>
+      <div class="try-products">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="d-flex align-items-center">
+                <div style="width: 600px;">
+                  <p>Try our Seasonal Products</p>
+                  <h2 class="display-4 my-3">Order for pick-up or delivery to your home</h2>
+                  <button>Shop Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -207,6 +305,10 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  img{
+    position: relative;
+  }
 
   h2,
   span {
@@ -284,5 +386,84 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.ms-col {
+  padding: 0 0 3rem 0;
+  background-color: #f0edf5;
+  flex-basis: calc(100% / 2);
+}
+
+.locations {
+
+  img {
+    transition: 1s scale;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  button {
+    background-color: white;
+    color: $color-primary;
+
+    &:hover {
+      background-color: $color-primary;
+      color: white;
+    }
+  }
+}
+
+.social {
+
+  .col-3,
+  .col-5 {
+    >div {
+      height: 350px;
+    }
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      transition: 1s;
+
+      &:hover {
+        scale: 1.1;
+      }
+    }
+
+    .follow-us {
+      background-color: #f6f0f3;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.try-products {
+  background-image: url("../assets/call-to-action-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 470px;
+  padding: 2rem 0;
+  color: white;
+
+  h2 {
+    color: white;
+  }
+
+  button {
+    background-color: white;
+    color: $color-primary;
+
+    &:hover {
+      background-color: $color-primary;
+      color: white;
+    }
+  }
 }
 </style>

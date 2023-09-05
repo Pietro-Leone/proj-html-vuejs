@@ -1,17 +1,41 @@
 <script>
+import List from "./List.vue"
 export default {
-  components: {},
-  props: {
-    navElements: {
-      type: Array,
-      required: true,
+  components: {
+    List,
+  },
+  data() {
+    return {
+      navElements: [
+        'shop',
+        'about',
+        'gallery',
+        'location',
+        'journal',
+        'contact'
+      ],
+      Sticky: false,
     }
+  },
+  //
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      this.Sticky = window.scrollY > 45;
+    },
   }
+
+
 }
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar-expand-lg" :class="{ 'navbar': true, 'sticky': Sticky }">
     <div class="container">
 
       <!-- Left-Nav -->
@@ -29,17 +53,19 @@ export default {
         <ul class="navbar-nav">
 
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">home</a>
+            <a class="home nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <span class="underline-home"></span>
+              home
+            </a>
             <ul class="dropdown-menu border-0">
               <li><a class="dropdown-item" href="#">Classic Shop</a></li>
               <li><a class="dropdown-item" href="#">Extended Width</a></li>
             </ul>
           </li>
 
-          <li class="nav-item" v-for="element in navElements">
-            <a class="nav-link" href="#">{{ element }}</a>
-          </li>
+          <List :navElements="navElements" />
+
         </ul>
       </div>
 
@@ -85,10 +111,41 @@ export default {
 
 <style lang="scss" scoped>
 @use "../style/partials/variables" as *;
+
+nav {
+  background-color: transparent;
+  padding: 20px;
+  position: sticky;
+  width: 100%;
+  top: 20px;
+  z-index: 100;
+
+  &.sticky {
+    background-color: white;
+    top: 0;
+  }
+}
+
+.underline-home {
+  position: absolute;
+  left: 8px;
+  top: 40px;
+  width: calc(100% - 16px);
+  height: 2px;
+  background: $color-primary;
+  z-index: 30;
+}
+
+
 .nav-link {
   text-transform: uppercase;
   color: $color-primary;
   font-weight: 500;
+  position: relative;
+
+  &:hover {
+    color: $color-primary;
+  }
 }
 
 .dropdown-toggle {
